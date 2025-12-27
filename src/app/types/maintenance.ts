@@ -14,6 +14,8 @@ export interface Equipment {
   serial: string;
   department: string;
   location: string;
+  // optional floor/location descriptor (e.g. '1', 'G', 'Roof')
+  floor?: string;
   warrantyExpiry: string;
   status: 'active' | 'scrapped';
   maintenanceCount: number;

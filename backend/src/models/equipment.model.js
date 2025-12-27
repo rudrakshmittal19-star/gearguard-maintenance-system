@@ -6,6 +6,7 @@ const equipmentSchema = new mongoose.Schema({
   serial: { type: String },
   department: { type: String },
   location: { type: String },
+  floor: { type: String },
   warrantyExpiry: { type: String },
   status: { type: String },
   maintenanceCount: { type: Number, default: 0 },

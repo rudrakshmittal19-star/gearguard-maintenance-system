@@ -8,6 +8,8 @@ import { CalendarView } from './components/CalendarView';
 import { StatsCards } from './components/StatsCards';
 import { LoginPage } from './components/LoginPage';
 import { VerificationPage } from './components/VerificationPage';
+import TechnicianManagement from './components/TechnicianManagement';
+import EquipmentManagement from './components/EquipmentManagement';
 import { useEffect, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { maintenanceRequests as mockRequests, equipment as mockEquipment, technicians as mockTechnicians } from './data/mockData';
@@ -84,6 +86,18 @@ export default function App() {
 
     socket.on('request:updated', (r) => {
       setRequests((prev) => prev.map((rr) => (rr.id === r.id ? r : rr)));
+    });
+
+    socket.on('equipment:created', (eq) => {
+      setEquipment((prev) => [...prev, eq]);
+    });
+
+    socket.on('equipment:updated', (eq) => {
+      setEquipment((prev) => prev.map((e) => (e.id === eq.id ? eq : e)));
+    });
+
+    socket.on('equipment:deleted', ({ id }) => {
+      setEquipment((prev) => prev.filter((e) => e.id !== id));
     });
 
     return () => {
@@ -275,9 +289,22 @@ export default function App() {
           )}
 
           {activeView === 'equipment' && (
+            <EquipmentManagement
+              onViewEquipment={(eq: any) => {
+                setSelectedEquipment(eq);
+                setActiveView('equipment-detail');
+              }}
+            />
+          )}
+
+          {activeView === 'technicians' && (
+            <TechnicianManagement />
+          )}
+
+          {activeView === 'equipment-detail' && (
             <EquipmentDetail
               equipment={selectedEquipment}
-              onBack={() => setActiveView('kanban')}
+              onBack={() => setActiveView('equipment')}
               onViewMaintenance={handleViewMaintenance}
             />
           )}

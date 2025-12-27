@@ -98,6 +98,51 @@ exports.getEquipment = async (req, res) => {
   }
 };
 
+exports.createEquipment = async (req, res) => {
+  try {
+    const payload = req.body;
+    if (!payload || !payload.id || !payload.name) return res.status(400).json({ message: 'id and name required' });
+    const exists = await Equipment.findOne({ id: payload.id });
+    if (exists) return res.status(409).json({ message: 'Equipment with this id already exists' });
+    const doc = await Equipment.create(payload);
+    const io = req.app.get('io');
+    if (io) io.emit('equipment:created', doc);
+    return res.status(201).json(doc);
+  } catch (err) {
+    console.error('createEquipment', err);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+exports.updateEquipment = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updates = req.body;
+    const doc = await Equipment.findOneAndUpdate({ id }, updates, { new: true });
+    if (!doc) return res.status(404).json({ message: 'Equipment not found' });
+    const io = req.app.get('io');
+    if (io) io.emit('equipment:updated', doc);
+    return res.json(doc);
+  } catch (err) {
+    console.error('updateEquipment', err);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+exports.deleteEquipment = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await Equipment.deleteOne({ id });
+    if (result.deletedCount === 0) return res.status(404).json({ message: 'Equipment not found' });
+    const io = req.app.get('io');
+    if (io) io.emit('equipment:deleted', { id });
+    return res.json({ message: 'Deleted' });
+  } catch (err) {
+    console.error('deleteEquipment', err);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 exports.getRequests = async (req, res) => {
   try {
     const docs = await MaintenanceRequest.find().lean();

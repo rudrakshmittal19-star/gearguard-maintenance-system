@@ -1,4 +1,4 @@
-import { LayoutGrid, FileText, Package, Calendar, Settings } from 'lucide-react';
+import { LayoutGrid, FileText, Package, Calendar, Settings, Users } from 'lucide-react';
 
 interface SidebarProps {
   activeView: string;
@@ -11,7 +11,8 @@ export function Sidebar({ activeView, onViewChange, equipmentCount = 5, maintena
   const menuItems = [
     { id: 'kanban', label: 'Kanban Board', icon: LayoutGrid },
     { id: 'form', label: 'New Request', icon: FileText },
-    { id: 'equipment', label: 'Equipment', icon: Package },
+  { id: 'equipment', label: 'Assets', icon: Package },
+    { id: 'technicians', label: 'Technicians', icon: Users },
     { id: 'calendar', label: 'Calendar', icon: Calendar },
   ];
 

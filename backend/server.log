@@ -1,3 +1,5 @@
-[dotenv@17.2.3] injecting env (8) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
-[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops
+[dotenv@17.2.3] injecting env (8) from .env -- tip: ✅ audit secrets and track compliance: https://dotenvx.com/ops
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ✅ audit secrets and track compliance: https://dotenvx.com/ops
 Backend listening on port 4000
+Failed to send OTP email, continuing (dev mode): getaddrinfo ENOTFOUND smtp.example.com
+Generated OTP for tester@example.com: 953754 (expires at 2025-12-27T07:37:26.415Z)

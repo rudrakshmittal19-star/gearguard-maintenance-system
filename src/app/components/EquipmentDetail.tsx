@@ -1,5 +1,5 @@
 import { Equipment } from '../types/maintenance';
-import { ChevronLeft, Wrench, MapPin, Building2, Calendar, TriangleAlert } from 'lucide-react';
+import { ChevronLeft, Wrench, MapPin, Building2, Calendar, AlertTriangle } from 'lucide-react';
 
 interface EquipmentDetailProps {
   equipment: Equipment;
@@ -8,6 +8,14 @@ interface EquipmentDetailProps {
 }
 
 export function EquipmentDetail({ equipment, onBack, onViewMaintenance }: EquipmentDetailProps) {
+  if (!equipment) {
+    return (
+      <div className="max-w-5xl mx-auto p-6">
+        <p className="text-gray-600">No equipment selected — please choose an item from the list.</p>
+      </div>
+    );
+  }
+
   const isScrapped = equipment.status === 'scrapped';
 
   return (

@@ -14,17 +14,18 @@ function makeAvatar(name: string) {
     .toUpperCase();
 }
 
-export const technicians: Technician[] = Array.from({ length: 6 }).map((_, i) => {
-  const first = indianFirstNames[i % indianFirstNames.length];
-  const last = indianLastNames[i % indianLastNames.length];
-  const name = `${first} ${last}`;
-  return {
-    id: `t${i + 1}`,
-    name,
-    avatar: makeAvatar(name),
-    color: colors[i % colors.length],
-  } as Technician;
-});
+export const technicians: Technician[] = [
+  { id: 't1', name: 'Aarav Mittal', avatar: makeAvatar('Aarav Mittal'), color: colors[0] },
+  { id: 't2', name: 'Priya Sharma', avatar: makeAvatar('Priya Sharma'), color: colors[1] },
+  { id: 't3', name: 'Rohan Verma', avatar: makeAvatar('Rohan Verma'), color: colors[2] },
+  { id: 't4', name: 'Ananya Gupta', avatar: makeAvatar('Ananya Gupta'), color: colors[3] },
+  { id: 't5', name: 'Karan Singh', avatar: makeAvatar('Karan Singh'), color: colors[4] },
+  { id: 't6', name: 'Isha Patel', avatar: makeAvatar('Isha Patel'), color: colors[5] },
+  { id: 't7', name: 'Vikram Reddy', avatar: makeAvatar('Vikram Reddy'), color: colors[0] },
+  { id: 't8', name: 'Meera Nair', avatar: makeAvatar('Meera Nair'), color: colors[1] },
+  { id: 't9', name: 'Sahil Iyer', avatar: makeAvatar('Sahil Iyer'), color: colors[2] },
+  { id: 't10', name: 'Nisha Chatterjee', avatar: makeAvatar('Nisha Chatterjee'), color: colors[3] },
+] as Technician[];
 
 export const equipment: Equipment[] = [
   {
@@ -73,9 +74,65 @@ export const equipment: Equipment[] = [
     serial: 'LASER-2024-003',
     department: 'Production',
     location: 'Building A - Floor 3',
+    floor: '3',
     warrantyExpiry: '2027-08-30',
     status: 'active',
     maintenanceCount: 3,
+  },
+  {
+    id: 'eq6',
+    name: 'Industrial Forklift',
+    serial: 'FL-2020-210',
+    department: 'Logistics',
+    location: 'Warehouse 1',
+    floor: 'G',
+    warrantyExpiry: '2025-05-01',
+    status: 'active',
+    maintenanceCount: 6,
+  },
+  {
+    id: 'eq7',
+    name: 'Backup Generator',
+    serial: 'GEN-2019-009',
+    department: 'Utilities',
+    location: 'Building B - Roof',
+    floor: 'Roof',
+    warrantyExpiry: '2028-09-30',
+    status: 'active',
+    maintenanceCount: 10,
+  },
+  {
+    id: 'eq8',
+    name: '3D Printer (Pro)',
+    serial: '3DP-2024-011',
+    department: 'R&D',
+    location: 'R&D Lab - Floor 1',
+    floor: '1',
+    warrantyExpiry: '2026-04-15',
+    status: 'active',
+    maintenanceCount: 1,
+  },
+  {
+    id: 'eq9',
+    name: 'Hydraulic Pump',
+    serial: 'HP-2022-077',
+    department: 'Manufacturing',
+    location: 'Building B - Floor 1',
+    floor: '1',
+    warrantyExpiry: '2025-07-20',
+    status: 'active',
+    maintenanceCount: 4,
+  },
+  {
+    id: 'eq10',
+    name: 'Vibration Analyzer',
+    serial: 'VA-2021-033',
+    department: 'Maintenance',
+    location: 'Maintenance Office - Floor 2',
+    floor: '2',
+    warrantyExpiry: '2026-11-11',
+    status: 'active',
+    maintenanceCount: 2,
   },
 ];
 
