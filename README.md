@@ -1,11 +1,41 @@
+GearGuard Maintenance System
 
-  # GearGuard Maintenance Management System
+Full-stack maintenance management platform designed to manage equipment, technicians, and service workflows with secure authentication and database integration.
 
-  This is a code bundle for GearGuard Maintenance Management System. The original project is available at https://www.figma.com/design/o0t4lNlvUXO4xSazwKPcOG/GearGuard-Maintenance-Management-System.
+Overview
+GearGuard is a maintenance management system built to handle equipment tracking, technician assignment, and service operations. The platform includes custom API authentication, OTP-based verification, and MongoDB integration to support real-world backend workflows.
 
-  ## Running the code
+Features
+- Equipment and technician management
+- Secure API authentication
+- OTP-based verification flow
+- Backend integration with MongoDB
+- Modular frontend and backend structure
+- Scalable system design
 
-  Run `npm i` to install the dependencies.
+Tech Stack
+- Frontend: React, TypeScript, Vite
+- Backend: Node.js, Express
+- Database: MongoDB
+- Authentication: Custom API auth, OTP verification
+- Styling: Tailwind CSS
 
-  Run `npm run dev` to start the development server.
-  
+Project Structure
+- /frontend – User interface and client-side logic
+- /backend – API routes, authentication logic, database models
+
+Project Status
+Core features and authentication workflows are implemented. Additional enhancements such as role-based access and analytics can be extended further.
+
+Getting Started
+1. Clone the repository  
+   git clone https://github.com/rudrakshmittal19-star/gearguard-maintenance-system.git
+
+2. Install dependencies  
+   npm install
+
+3. Configure environment variables  
+   Add MongoDB URI and authentication configs
+
+4. Run the application  
+   npm run dev
